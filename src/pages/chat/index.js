@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Message from './Message'
 import Wrapper from './Wrapper'
 import { getIntent, INTENTS } from '../../ai/AnswerUtils'
@@ -6,6 +6,7 @@ import { getIntent, INTENTS } from '../../ai/AnswerUtils'
 const ChatPage = ({
   initialMessages = testMessages
 }) => {
+  const scrollableContent = useRef(null)
   const [messages, setMessages] = useState([])
   const [queryId, setQueryId] = useState(null)
 
@@ -38,9 +39,8 @@ const ChatPage = ({
     [INTENTS.profession]: ['I am a software engineer!', 'I work as software engineer.'],
     [INTENTS.school]: ['Fisk University at Nashville, TN', 'I completed my BSC in Computer Science from Fisk University.'],
     [INTENTS.major]: ['Computer Science!'],
-    [INTENTS.aboutme]: [
-      'Human being, son, friend, software engineer!'
-    ],
+    [INTENTS.aboutme]: ['Human being, son, friend, software engineer!'],
+    [INTENTS.name]: ['My name is Upen', 'I am virtual Upen', 'I am duplicate of Upen'],
     [INTENTS.favoriteColor]: ['I like green!', 'I like earthly colors'],
     error: ['I am having some troble processing. Try again!'],
     unknown: ['Oops! I am not that smart after all! Please try rephrasing.']
@@ -72,6 +72,12 @@ const ChatPage = ({
     setQuery(event.target.value)
   }
 
+  useEffect(() => {
+    if (scrollableContent.current) {
+      scrollableContent.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [scrollableContent, messages.length])
+
   return (
     <Wrapper>
       <div className='chat-window-wrapper'>
@@ -80,14 +86,20 @@ const ChatPage = ({
               Artificial Upen
           </div>
         </div>
-        <div className='chat-content'>
-          {
-            messages.map((message) => {
-              return (
-                <Message key={message.id} {...message} />
-              )
-            })
-          }
+        <div className='chat-content-wrapper'>
+          <div className='chat-content'>
+            {
+              messages.map((message) => {
+                return (
+                  <Message key={message.id} {...message} />
+                )
+              })
+            }
+          </div>
+          <div
+            style={{ float: 'left', clear: 'both' }}
+            ref={scrollableContent}
+          />
         </div>
         <div className='query'>
           <input
