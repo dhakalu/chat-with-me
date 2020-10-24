@@ -82,6 +82,8 @@ const Wrapper = styled.div`
                 color: #f0f0f0;
                 padding: 11px 18px;
             }
+
+            input:focus { font-size: 16px !important}
         }
     }
 `
