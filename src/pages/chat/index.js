@@ -66,6 +66,7 @@ const ChatPage = ({
           [...messages, message])
       })()
     }
+  // eslint-disable-next-line
   }, [queryId])
 
   const handleQueryChange = (event) => {
