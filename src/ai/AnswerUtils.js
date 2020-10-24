@@ -22,7 +22,7 @@ export const INTENTS = {
   school: 'school',
   major: 'major',
   name: 'name',
-  currentWork: 'currentWrok'
+  currentWork: 'currentWork'
 }
 
 /**

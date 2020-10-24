@@ -9,6 +9,7 @@ const MessageWrapper = styled.div`
     max-width: 500px;
     margin: 10px 20px;
     align-self: ${props => props.isQuery ? 'flex-end' : 'flex-start'};
+    line-height: 1.7rem;
 `
 
 export default MessageWrapper

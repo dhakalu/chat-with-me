@@ -36,12 +36,14 @@ const ChatPage = ({
 
   const responses = {
     [INTENTS.greeting]: ['Hi there, Nic to mee you!', 'Hello!', 'Hi,'],
-    [INTENTS.profession]: ['I am a software engineer!', 'I work as software engineer.'],
+    [INTENTS.profession]:
+      ['I just do what I get trained to do. Upen, my boss, writes code most of working days. He does random things in weekends.'],
     [INTENTS.school]: ['Fisk University at Nashville, TN', 'I completed my BSC in Computer Science from Fisk University.'],
     [INTENTS.major]: ['Computer Science!'],
-    [INTENTS.aboutme]: ['Human being, son, friend, software engineer!'],
-    [INTENTS.name]: ['My name is Upen', 'I am virtual Upen', 'I am duplicate of Upen'],
+    [INTENTS.aboutme]: ['I am a robot. Upen created me to train me to answer some questions about him. Want to know him? click here.'],
+    [INTENTS.name]: [`My name Boten. I am robot created by Upen.`],
     [INTENTS.favoriteColor]: ['I like green!', 'I like earthly colors'],
+    [INTENTS.currentWork]: ['I answer your questions. Upen works at Change Healthcare as a Software Engineer.'],
     error: ['I am having some troble processing. Try again!'],
     unknown: ['Oops! I am not that smart after all! Please try rephrasing.']
   }
@@ -121,6 +123,6 @@ const testMessages = [
   {
     id: 1,
     type: 'resonse',
-    content: 'Hi there! Welcome to UpenAI. You can ask me any question about real Upen.'
+    content: 'Hi there! Welcome to UpenAI. You can ask me any question either about me or real Upen.'
   }
 ]
