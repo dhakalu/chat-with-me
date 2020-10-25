@@ -93,13 +93,15 @@ const ChatPage = ({
         </div>
         <div className='chat-content-wrapper'>
           <div className='chat-content'>
-            {
-              messages.map((message) => {
-                return (
-                  <Message key={message.id} {...message} />
-                )
-              })
-            }
+            <div>
+              {
+                messages.map((message) => {
+                  return (
+                    <Message key={message.id} {...message} />
+                  )
+                })
+              }
+            </div>
           </div>
           <div
             style={{ float: 'left', clear: 'both' }}

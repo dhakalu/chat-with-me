@@ -37,13 +37,12 @@ const Wrapper = styled.div`
 
         .chat-content-wrapper {
             overflow: auto;
-            display: flex;
             flex: 1;
         }
 
         .chat-content-wrapper::-webkit-scrollbar {
             background-color: ${Colors.surface};
-            width:16px
+            width:16px;
         }
         
         /* background of the scrollbar except button or resizer */
@@ -70,8 +69,13 @@ const Wrapper = styled.div`
         .chat-content {
             flex: 1;
             display: flex;
-            flex-direction: column;
             justify-content: center;
+            align-items: center;
+            > div {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
         }
 
         .query{
