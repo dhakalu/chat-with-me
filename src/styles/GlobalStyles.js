@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
   body, html {
     padding: 0;
     margin: 0;
+    height: -webkit-fill-available;
   }
 
   * {

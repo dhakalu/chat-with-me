@@ -17,6 +17,8 @@ const Wrapper = styled.div`
         flex-direction: column;
         background: ${Colors.surface};
         height: 100vh;
+        height: -webkit-fill-available;
+        overflow: hidden;
         width: 100vw;
         box-shadow: 0 0 20px 0 #121212;
 
