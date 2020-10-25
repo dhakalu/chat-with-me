@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Message from './Message'
 import Wrapper from './Wrapper'
 import { getIntent, INTENTS } from '../../ai/AnswerUtils'
+import SendIcon from './SendIcon'
 
 const ChatPage = ({
   initialMessages = testMessages
@@ -38,6 +39,7 @@ const ChatPage = ({
   }, [scrollableContent, messages.length])
 
   const onQuerySubmit = () => {
+    if (!query) return
     setMessages(
       [...messages, {
         type: 'query',
@@ -116,6 +118,7 @@ const ChatPage = ({
               placeholder='Start typing...'
             />
           </form>
+          <SendIcon onClick={handleSubmit} />
         </div>
       </div>
     </Wrapper>

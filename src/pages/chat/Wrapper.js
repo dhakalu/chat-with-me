@@ -81,6 +81,13 @@ const Wrapper = styled.div`
         .query{
             margin: 10px;
             width: calc(100% - 22px);
+            display: flex;
+            
+            form {
+                flex: 1;
+                margin-right: 7px;
+            }
+
             input {
                 width: calc(100% - 36px);
                 border: none;
@@ -90,6 +97,20 @@ const Wrapper = styled.div`
                 color: #f0f0f0;
                 padding: 11px 18px;
                 font-size: 16px;
+                height: 26px;
+                
+            }
+
+            .send-icon {
+                height: 26px;
+                width: 26px;
+                padding: 10px;
+                background: #BB86FC;
+                border-radius: 50%;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
     }
