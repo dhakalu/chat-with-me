@@ -107,7 +107,7 @@ const Wrapper = styled.div`
                 padding: 10px;
                 background: #BB86FC;
                 border-radius: 50%;
-
+                outline: none;
                 &:hover {
                     cursor: pointer;
                 }

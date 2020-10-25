@@ -3,10 +3,14 @@ import React from 'react'
 const SendIcon = ({
   fill = '#f0f0f0',
   className = 'send-icon',
-  onClick = () => false
+  onClick = () => false,
+  onEnter = () => false,
+  tabIndex = 0
 }) => {
   return (
     <svg
+      tabIndex={tabIndex}
+      onKeyPress={onEnter}
       onClick={onClick}
       className={className}
       style={{ fill: fill }}

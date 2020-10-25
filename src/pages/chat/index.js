@@ -118,7 +118,11 @@ const ChatPage = ({
               placeholder='Start typing...'
             />
           </form>
-          <SendIcon onClick={handleSubmit} />
+          <SendIcon
+            tabIndex={0}
+            onClick={handleSubmit}
+            onEnter={handleSubmit}
+          />
         </div>
       </div>
     </Wrapper>
