@@ -9,24 +9,25 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: ${Colors.secondary};
+    background: ${Colors.background};
     color: #aaa;
     .chat-window-wrapper {
+        elevation: 1;
         display: flex;
         flex-direction: column;
-        background: ${Colors.secondary};
+        background: ${Colors.surface};
         height: 100vh;
         width: 100vw;
         box-shadow: 0 0 20px 0 #121212;
 
         @media (min-width: 1020px) {
             width: 680px;
-            border: 2px solid  ${Colors.secondary};
+            border: 2px solid  ${Colors.surface};
         }
 
         .header {
             padding: 10px;
-            border-bottom: 2px solid  ${Colors.secondary};
+            border-bottom: 2px solid  ${Colors.surface};
             width: calc(100% - 20px);
             box-shadow: 0 0 30px -10px #121212;
             .header-title {
@@ -36,25 +37,26 @@ const Wrapper = styled.div`
 
         .chat-content-wrapper {
             overflow: auto;
+            display: flex;
             flex: 1;
         }
 
         .chat-content-wrapper::-webkit-scrollbar {
-            background-color: ${Colors.secondary};
+            background-color: ${Colors.surface};
             width:16px
         }
         
         /* background of the scrollbar except button or resizer */
         .chat-content-wrapper::-webkit-scrollbar-track {
-            background-color: ${Colors.secondary};
+            background-color: ${Colors.surface};
         }
        
      
         /* scrollbar itself */
         .chat-content-wrapper::-webkit-scrollbar-thumb {
-            background-color: ${Colors.primary};
+            background-color: ${Colors.surface};
             border-radius:16px;
-            border:5px solid ${Colors.secondary};
+            border:5px solid ${Colors.surface};
         }
         .chat-content-wrapper::-webkit-scrollbar-thumb:hover {
             background-color:#a0a0a5;
@@ -66,8 +68,10 @@ const Wrapper = styled.div`
         
 
         .chat-content {
+            flex: 1;
             display: flex;
             flex-direction: column;
+            justify-content: center;
         }
 
         .query{
@@ -81,9 +85,8 @@ const Wrapper = styled.div`
                 outline: none;
                 color: #f0f0f0;
                 padding: 11px 18px;
+                font-size: 16px;
             }
-
-            input:focus { font-size: 16px !important}
         }
     }
 `

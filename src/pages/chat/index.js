@@ -16,46 +16,6 @@ const ChatPage = ({
 
   const [query, setQuery] = useState('')
 
-  const handleKeyPressOnInput = (event) => {
-    const enterCharCode = 13
-    if (event.charCode === enterCharCode) {
-      setMessages(
-        [...messages, {
-          type: 'query',
-          content: query
-        }])
-      setQueryId(queryId + 1)
-    }
-  }
-
-  const getRandomAnswer = (answers = []) => {
-    if (!answers.length) return 'Opps! I could not understand what you just said :('
-    const randomIndex = Math.floor(Math.random() * answers.length)
-    return answers[randomIndex]
-  }
-
-  const responses = {
-    [INTENTS.greeting]: ['Hi there, Nic to mee you!', 'Hello!', 'Hi,'],
-    [INTENTS.profession]:
-      ['I just do what I get trained to do. Upen, my boss, writes code most of working days. He does random things in weekends.'],
-    [INTENTS.school]: ['Fisk University at Nashville, TN', 'I completed my BSC in Computer Science from Fisk University.'],
-    [INTENTS.major]: ['Computer Science!'],
-    [INTENTS.aboutme]: ['I am a robot. Upen created me to train me to answer some questions about him. Want to know him? click here.'],
-    [INTENTS.name]: [`My name Boten. I am robot created by Upen.`],
-    [INTENTS.favoriteColor]: ['I like green!', 'I like earthly colors'],
-    [INTENTS.currentWork]: ['I answer your questions. Upen works at Change Healthcare as a Software Engineer.'],
-    error: ['I am having some troble processing. Try again!'],
-    unknown: ['Oops! I am not that smart after all! Please try rephrasing.']
-  }
-
-  // TODO: seperate this out to its own file
-  const getResponeFromIntent = async (intent) => {
-    return {
-      type: 'response', // todo move this to constant
-      content: getRandomAnswer(responses[intent])
-    }
-  }
-
   useEffect(() => {
     // start fetching things
     if (queryId) {
@@ -71,15 +31,57 @@ const ChatPage = ({
   // eslint-disable-next-line
   }, [queryId])
 
-  const handleQueryChange = (event) => {
-    setQuery(event.target.value)
-  }
-
   useEffect(() => {
     if (scrollableContent.current) {
       scrollableContent.current.scrollIntoView({ behavior: 'smooth' })
     }
   }, [scrollableContent, messages.length])
+
+  const onQuerySubmit = () => {
+    setMessages(
+      [...messages, {
+        type: 'query',
+        content: query
+      }])
+    setQueryId(queryId + 1)
+  }
+
+  const getRandomAnswer = (answers = []) => {
+    if (!answers.length) return 'Opps! I could not understand what you just said :('
+    const randomIndex = Math.floor(Math.random() * answers.length)
+    return answers[randomIndex]
+  }
+
+  const responses = {
+    [INTENTS.greeting]: ['Hi there, Nic to mee you!', 'Hello!', 'Hi,'],
+    [INTENTS.profession]:
+      ['I just do what I get trained to do. Upen, my boss, writes code most of working days. He does random things in weekends.'],
+    [INTENTS.school]: ['Fisk University at Nashville, TN', 'I completed my BSC in Computer Science from Fisk University.'],
+    [INTENTS.major]: ['Computer Science!'],
+    [INTENTS.aboutme]: ['I am a robot. Upen created me to train me to answer some questions about him. Want to know him? click here.'],
+    [INTENTS.name]: ['My name Boten. I am robot created by Upen.'],
+    [INTENTS.favoriteColor]: ['I like green!', 'I like earthly colors'],
+    [INTENTS.currentWork]: ['I answer your questions. Upen works at Change Healthcare as a Software Engineer.'],
+    error: ['I am having some troble processing. Try again!'],
+    unknown: ['Oops! I am not that smart after all! Please try rephrasing.']
+  }
+
+  // TODO: seperate this out to its own file
+  const getResponeFromIntent = async (intent) => {
+    return {
+      type: 'response', // todo move this to constant
+      content: getRandomAnswer(responses[intent])
+    }
+  }
+
+  const handleQueryChange = (event) => {
+    setQuery(event.target.value)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    onQuerySubmit()
+  }
 
   return (
     <Wrapper>
@@ -105,12 +107,13 @@ const ChatPage = ({
           />
         </div>
         <div className='query'>
-          <input
-            value={query}
-            onChange={handleQueryChange}
-            onKeyPress={handleKeyPressOnInput}
-            placeholder='Start typing...'
-          />
+          <form onSubmit={handleSubmit}>
+            <input
+              value={query}
+              onChange={handleQueryChange}
+              placeholder='Start typing...'
+            />
+          </form>
         </div>
       </div>
     </Wrapper>
